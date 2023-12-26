@@ -8,7 +8,7 @@ const int numLeds = 10;
 const int ledsPerSegment = numLeds / numSegments;
 const int ledPin = 8;
 const uint16_t startHue = 0;
-const uint16_t endHue = 65536 / 3;
+const uint16_t endHue = 65536 / 2;
 const int maxBrightness = 100;
 
 unsigned long timeLastUpdated = 0;

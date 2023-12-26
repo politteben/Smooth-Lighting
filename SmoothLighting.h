@@ -20,11 +20,16 @@
 class SmoothLights
 {
   public:
-    SmoothLights(Adafruit_Neopixel strip);
+    SmoothLights(Adafruit_NeoPixel strip);
 
     void begin(void);
+    // void begin(uint16_t startHue, bool segmented = false, uint16_t numOfSegments = 14);
+    // void begin(uint16_t startHue, uint16_t stopHue, bool segmented = false, uint16_t numOfSegments = 14, uint16_t shiftAmount = 10);
+    // void begin(uint16_t startHue, uint16_t stopHue, uint16_t shiftAmount = 10);
+
     void update(void);
     void setTarget(double target);
+    void clear(void);
 
     bool hasArrived(void);
   private:
@@ -34,9 +39,10 @@ class SmoothLights
     int _numSegments;
     int _numLeds;
     int _ledsPerSegment;
-    int _ledPin;
     uint16_t _startHue;
     uint16_t _endHue;
+    uint8_t _maxBrightness;
+    Adafruit_NeoPixel _strip;
 
     long _timeLastUpdated;
     double _targetPercent;

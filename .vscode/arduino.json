@@ -1,0 +1,5 @@
+{
+    "sketch": "Function Testing/FunctionTesting.ino",
+    "board": "arduino:samd:adafruit_circuitplayground_m0",
+    "output": "./build"
+}
