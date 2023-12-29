@@ -23,15 +23,19 @@ class SmoothLights
     SmoothLights(Adafruit_NeoPixel strip);
 
     void begin(void);
-    // void begin(uint16_t startHue, bool segmented = false, uint16_t numOfSegments = 14);
-    // void begin(uint16_t startHue, uint16_t stopHue, bool segmented = false, uint16_t numOfSegments = 14, uint16_t shiftAmount = 10);
-    // void begin(uint16_t startHue, uint16_t stopHue, uint16_t shiftAmount = 10);
+    void begin(uint16_t startHue, bool segmented = false, uint16_t numOfSegments = 14);
+    void begin(uint16_t startHue, uint16_t stopHue, bool segmented = false, uint16_t numOfSegments = 14, uint16_t shiftAmount = 10);
+    void begin(uint16_t startHue, uint16_t stopHue, uint16_t shiftAmount = 10);
 
     void update(void);
-    void setTarget(double target);
+    void setTarget(double percent);
     void clear(void);
+    void setBrightness(uint8_t brightness);
+    void adjustClipping(uint16_t lower, uint16_t upper);
 
-    bool hasArrived(void);
+    bool hasArrived(void) {
+      return _currentPos == _targetPos;
+    }
   private:
     int _refreshrate;
     int _adjustmentValue;
@@ -41,11 +45,15 @@ class SmoothLights
     int _ledsPerSegment;
     uint16_t _startHue;
     uint16_t _endHue;
+    uint16_t _lowerClipping;
+    uint16_t _upperClipping;
     uint8_t _maxBrightness;
     Adafruit_NeoPixel _strip;
+    bool _hasBegun;
+    bool _newTarget;
 
     long _timeLastUpdated;
-    double _targetPercent;
+    long _targetPos;
     long _currentPos;
     long _maximumPos;
 };
