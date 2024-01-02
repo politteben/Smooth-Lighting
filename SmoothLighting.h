@@ -23,9 +23,7 @@ class SmoothLights
     SmoothLights(Adafruit_NeoPixel strip);
 
     void begin(void);
-    void begin(uint16_t startHue, bool segmented = false, uint16_t numOfSegments = 14);
     void begin(uint16_t startHue, uint16_t stopHue, bool segmented = false, uint16_t numOfSegments = 14, uint16_t shiftAmount = 10);
-    void begin(uint16_t startHue, uint16_t stopHue, uint16_t shiftAmount = 10);
 
     void update(void);
     void setTarget(double percent);

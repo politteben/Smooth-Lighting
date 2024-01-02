@@ -15,7 +15,7 @@ void setup() {
   Serial.begin(9600);
   randomSeed(analogRead(0));
   
-  leds.begin(startHue, endHue, true, 5, 1);
+  leds.begin(startHue, endHue, false, numSegments, 10);
   leds.setBrightness(75);
 
   leds.setTarget(1.0);
